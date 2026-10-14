@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+:root {
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #172033;
+  background: #f6f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@keyframes modal-backdrop-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-panel-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modal-backdrop-exit {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-panel-exit {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes booking-toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes booking-toast-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply min-h-screen bg-slate-50 text-slate-900;
+  }
+
+  .page-container {
+    @apply mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8;
+  }
+
+  .page-title {
+    @apply text-3xl font-semibold tracking-normal text-slate-950;
+  }
+
+  .page-subtitle {
+    @apply max-w-2xl text-base leading-7 text-slate-600;
+  }
+
+  .card {
+    @apply rounded-lg border border-slate-200 bg-white p-6 shadow-sm;
+  }
+
+  .btn {
+    @apply inline-flex min-h-10 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply bg-slate-950 text-white hover:bg-slate-800;
+  }
+
+  .btn-secondary {
+    @apply border border-slate-300 bg-white text-slate-900 hover:bg-slate-100;
+  }
+
+  .form-grid {
+    @apply grid gap-4;
+  }
+
+  .form-label {
+    @apply text-sm font-medium text-slate-700;
+  }
+
+  .form-input {
+    @apply min-h-10 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 outline-none transition-colors placeholder:text-slate-400 focus:border-slate-500 focus:ring-2 focus:ring-slate-200;
+  }
+
+  .modal-backdrop-enter {
+    animation: modal-backdrop-enter 180ms ease-out;
+  }
+
+  .modal-panel-enter {
+    animation: modal-panel-enter 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .modal-backdrop-exit {
+    animation: modal-backdrop-exit 180ms ease-out;
+  }
+
+  .modal-panel-exit {
+    animation: modal-panel-exit 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .booking-toast-enter {
+    animation: booking-toast-enter 360ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .booking-toast-exit {
+    animation: booking-toast-exit 360ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@media print {
+  @page {
+    margin: 0.5in;
+    size: auto;
+  }
+
+  :root {
+    background: #ffffff;
+    color: #0f172a;
+  }
+
+  body {
+    min-width: 0;
+    background: #ffffff;
+  }
+
+  header,
+  .print-hidden {
+    display: none !important;
+  }
+
+  .app-shell,
+  .page-container,
+  .ticket-page {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .ticket-print-area {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    color: #0f172a !important;
+    overflow: hidden !important;
+  }
+
+  .ticket-print-area * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .ticket-banner {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border-bottom: 1px solid #cbd5e1 !important;
+  }
+
+  .ticket-banner-probe {
+    display: none !important;
+  }
+
+  .ticket-banner h2,
+  .ticket-banner p,
+  .ticket-banner dt,
+  .ticket-banner dd {
+    color: #0f172a !important;
+  }
+
+  .ticket-status-badge {
+    border: 1px solid #94a3b8 !important;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
